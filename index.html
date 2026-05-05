@@ -10,9 +10,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #f0f0f0;
         }
 
@@ -77,6 +77,12 @@
         .reset-btn:hover {
             background-color: #ddd;
         }
+
+        .status {
+            margin-top: 20px;
+            color: #777;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -92,29 +98,9 @@
 
     <button class="reset-btn" onclick="resetCounter()">Nullstill teller</button>
 
-    <script>
-        // Hent lagret verdi fra localStorage når siden lastes
-        let count = localStorage.getItem('monsenCount') ? parseInt(localStorage.getItem('monsenCount')) : 0;
-        
-        // Oppdater displayet med en gang
-        const counterDisplay = document.getElementById('counter');
-        counterDisplay.innerText = count;
+    <div id="status" class="status">Kobler til Firebase...</div>
 
-        function increment() {
-            count++;
-            counterDisplay.innerText = count;
-            // Lagre den nye verdien
-            localStorage.setItem('monsenCount', count);
-        }
-
-        function resetCounter() {
-            if(confirm("Er du sikker på at du vil nullstille Erik?")) {
-                count = 0;
-                counterDisplay.innerText = count;
-                localStorage.setItem('monsenCount', count);
-            }
-        }
-    </script>
+    <script type="module" src="./app.js"></script>
 
 </body>
 </html>
